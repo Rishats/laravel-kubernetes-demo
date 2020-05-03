@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: laravel-kubernetes-demo
+spec:
+  selector:
+    app: laravel-kubernetes-demo
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

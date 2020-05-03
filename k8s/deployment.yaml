@@ -1,0 +1,30 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: laravel-kubernetes-demo 
+spec:
+  selector:
+    matchLabels:
+      app: laravel-kubernetes-demo
+  replicas: 2 # tells deployment to run 1 pod matching the template
+  template:
+    metadata:
+      labels:
+        app: laravel-kubernetes-demo
+    spec:
+      containers:
+      - name: laravel-kubernetes-demo
+        image: skeletondocker/laravel-kubernetes-demo
+        env:
+        - name: APP_KEY
+          value: "base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY="
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "100m"
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 80
