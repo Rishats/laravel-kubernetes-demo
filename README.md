@@ -36,7 +36,7 @@ __Create a ingress for K8S:__
 
 __Create a hpa-rsa for K8S(optional):__
 
-`kubectl apply -f k8s/controller/hpa-rs.y.yaml`
+`kubectl apply -f k8s/controllers/hpa-rs.yaml`
 
 ## License
 
