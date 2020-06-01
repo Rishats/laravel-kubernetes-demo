@@ -7,7 +7,7 @@ data:
  APP_ENV: production
  APP_KEY: base64:jggD+FTTq9rNZu5L5IORcfF4snCrNGq/UHosUUFKXW8=
  APP_LOG_LEVEL: debug
- APP_NAME: "Laravel-Todo"
+ APP_NAME: "Laravel"
  APP_URL: https://www.laravel.com
  BROADCAST_DRIVER: pusher
  CACHE_DRIVER: redis
@@ -21,3 +21,7 @@ data:
  DB_USERNAME: username
  REDIS_HOST: redis-master
  REDIS_PORT: "6379"
+ MINIO_KEY: "AKIAIOSFODNN7EXAMPLE"
+ MINIO_SECRET: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+ MINIO_BUCKET: "laravel"
+ MINIO_ENDPOINT: "http://minio.example.com"

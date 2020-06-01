@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/minio', function () {
+    $randomId = uniqid();
+    Storage::disk('minio')->put((string)$randomId . ".txt", 'Hello from current unix timestamp:' . (string)$randomId);
+});

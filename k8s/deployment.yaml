@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: laravel-kubernetes-demo
-        image: skeletondocker/laravel-kubernetes-demo
+        image: skeletondocker/laravel-kubernetes-demo:latest
         envFrom:
         - configMapRef:
             name: laravel-app-backend

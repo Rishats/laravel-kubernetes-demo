@@ -63,6 +63,14 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'minio' => [
+            'driver' => 'minio',
+            'key' => env('MINIO_KEY', 'your minio server key'),
+            'secret' => env('MINIO_SECRET', 'your minio server secret'),
+            'region' => 'us-east-1',
+            'bucket' => env('MINIO_BUCKET','your minio bucket name'),
+            'endpoint' => env('MINIO_ENDPOINT','http://localhost:9000')
+        ]
     ],
 
 ];
