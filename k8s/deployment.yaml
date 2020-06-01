@@ -15,9 +15,10 @@ spec:
       containers:
       - name: laravel-kubernetes-demo
         image: skeletondocker/laravel-kubernetes-demo
+        envFrom:
+        - configMapRef:
+            name: laravel-app-backend
         env:
-        - name: APP_KEY
-          value: "base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY="
         resources:
           requests:
             memory: "256Mi"

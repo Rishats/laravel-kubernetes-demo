@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: laravel-app-backend
+data:
+ APP_DEBUG: "true"
+ APP_ENV: production
+ APP_KEY: base64:jggD+FTTq9rNZu5L5IORcfF4snCrNGq/UHosUUFKXW8=
+ APP_LOG_LEVEL: debug
+ APP_NAME: "Laravel-Todo"
+ APP_URL: https://www.laravel.com
+ BROADCAST_DRIVER: pusher
+ CACHE_DRIVER: redis
+ QUEUE_DRIVER: redis
+ SESSION_DRIVER: redis
+ DB_CONNECTION: mysql
+ DB_DATABASE: task
+ DB_HOST: host
+ DB_PASSWORD: password
+ DB_PORT: "3306"
+ DB_USERNAME: username
+ REDIS_HOST: redis-master
+ REDIS_PORT: "6379"
