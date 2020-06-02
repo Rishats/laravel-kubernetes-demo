@@ -6,7 +6,12 @@ spec:
   selector:
     matchLabels:
       app: laravel-kubernetes-demo
-  replicas: 2 # tells deployment to run 1 pod matching the template
+  replicas: 2 # tells deployment to run 2 pod matching the template
+  strategy:
+   rollingUpdate:
+     maxSurge: 0         # <2>
+     maxUnavailable: 1   # <3>
+   type: RollingUpdate   # <1>
   template:
     metadata:
       labels:
@@ -15,6 +20,12 @@ spec:
       containers:
       - name: laravel-kubernetes-demo
         image: skeletondocker/laravel-kubernetes-demo:latest
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 2  
         envFrom:
         - configMapRef:
             name: laravel-app-backend
