@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: laravel-migrations
+spec:
+  template:
+    spec:
+      containers:
+        - name: laravel-kubernetes-demo
+          image: skeletondocker/laravel-kubernetes-demo
+          command: ['php', 'artisan', 'migrate', '--force']
+          envFrom:
+          - configMapRef:
+              name: laravel-app-backend
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Never
+  backoffLimit: 5
