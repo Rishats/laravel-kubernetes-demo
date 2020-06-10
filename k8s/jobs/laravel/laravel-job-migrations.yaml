@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: laravel-kubernetes-demo
-          image: skeletondocker/laravel-kubernetes-demo
+          image: skeletondocker/laravel-kubernetes-demo:latest
           command: ['php', 'artisan', 'migrate', '--force']
           envFrom:
           - configMapRef:
