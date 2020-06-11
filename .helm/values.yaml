@@ -1,0 +1,13 @@
+deploy_jobs:
+  - name: migrate
+    command: '["/usr/bin/php7.2", "artisan", "migrate", "--force"]'
+    activeDeadlineSeconds: 120
+    when:
+      production: 'pre-install,pre-upgrade'
+      staging: 'pre-install,pre-upgrade'
+      _default: ''
+  - name: cache-clear
+    command: '["/usr/bin/php7.2", "artisan", "cache:clear"]'
+    activeDeadlineSeconds: 60
+    when:
+      _default: 'post-install,post-upgrade'

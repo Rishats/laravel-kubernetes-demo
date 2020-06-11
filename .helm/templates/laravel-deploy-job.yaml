@@ -1,0 +1,32 @@
+{{- range $index, $job := .Values.deploy_jobs }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ $.Chart.Name }}-{{ $job.name }}
+  annotations:
+    "helm.sh/hook": {{ pluck $.Values.global.env $job.when | first | default $job.when._default }}
+    "helm.sh/hook-weight": "1{{ $index }}"
+spec:
+  activeDeadlineSeconds: {{ $job.activeDeadlineSeconds }}
+  backoffLimit: 0
+  template:
+    metadata:
+      name: {{ $.Chart.Name }}-{{ $job.name }}
+    spec:
+      imagePullSecrets:
+      - name: {{ required "$.Values.registry.secret_name required" $.Values.registry.secret_name }}
+      initContainers:
+      - name: wait-db
+        image: alpine:3.6
+        сommand: ["/bin/sh", "-c", "while ! nc -z mysql 3306; do sleep 1; done;"]
+      containers:
+      - name: job
+        command: {{ $job.command }}
+# {{ tuple "backend" $ | include "werf_container_image" | indent 8 }}
+        env:
+# {{ tuple "backend" $ | include "werf_container_env" | indent 8 }}
+       - name: DB_HOST
+         value: postgres
+      restartPolicy: Never
+{{- end }}

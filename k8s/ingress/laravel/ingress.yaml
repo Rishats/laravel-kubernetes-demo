@@ -6,8 +6,8 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   backend:
-    serviceName: default-http-server
-    servicePort: 80
+    serviceName: laravel-kubernetes-demo
+    servicePort: laravel-http
   rules:
   - host: laravel-kubernetes.demo
   - http:
@@ -15,4 +15,4 @@ spec:
       - path: /
         backend:
           serviceName: laravel-kubernetes-demo
-          servicePort: 80
+          servicePort: laravel-http

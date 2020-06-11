@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: laravel-kubernetes-demo
 spec:
+  type: NodePort
   selector:
     app: laravel-kubernetes-demo
   ports:
-    - protocol: TCP
+    - name: laravel-http
+      protocol: TCP
       port: 80
       targetPort: 80

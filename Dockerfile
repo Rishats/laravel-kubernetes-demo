@@ -141,6 +141,8 @@ RUN composer install
 RUN cp .env.example .env
 RUN php artisan key:generate
 
+EXPOSE 80
+
 COPY ./docker/docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 RUN ln -s /usr/local/bin/docker-entrypoint.sh /
